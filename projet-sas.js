@@ -64,3 +64,5 @@ function ajouter_pls(n){
 for (let i=0; i<n;i++)
     ajouter_un()
 }
+
+//
