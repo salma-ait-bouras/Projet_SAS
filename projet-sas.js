@@ -2,7 +2,7 @@ const prompt = require('prompt-sync')();
 
 // menu
 function menu (){
-console.log("==================== Menu ==================== ")
+console.log("===============  ===== Menu ==================== ")
 console.log(" 1. Ajouter un nouveau candidat")
 console.log(" 2. Ajouter plusieurs candidats à la fois")
 console.log(" 3. Afficher la liste des candidats")
@@ -40,21 +40,23 @@ const candidats = [
   { cin: "ST012345", nom: "Fassi", prenom: "Khadija", partiPolitique: "PAM", age: 31,
     electeurs: [] },
 ];
-function ajouter_un()  {
-    let CIN = prompt("saisir votre CIN : ")
-    let NOM = prompt("saisir votre nom  : ")
-    let PRENOM = prompt("saisir votre prenom  : ")
-    let PartiPolitique = prompt("qu`il est votre Parti Politique : ")
-    let AGE = prompt("saisir votre age  : ")
-    if (PartiPolitique==="")
-         PartiPolitique="Indépendant"
 
-    let type=false;
-    while(!type){
-        if (typeof AGE === typeof 34 ) 
-            return type=true;
-       console.log(prompt("saisir votre age  : "))
-    }  
+function ajouter_un()  {
+  let CIN = prompt("saisir votre CIN : ")
+  let NOM = prompt("saisir votre nom  : ")
+  let PRENOM = prompt("saisir votre prenom  : ")
+  let PartiPolitique = prompt("qu`il est votre Parti Politique : ")
+  let AGE= Number(prompt("saisir votre age  : ")) ;
+  if (PartiPolitique==="")
+        PartiPolitique="Indépendant"
+
+  while(!Number.isInteger(AGE)){
+    console.log("L'âge doit être un nombre.")
+    AGE= Number(prompt("saisir votre age  : "))
+  if(AGE<18)
+    console.log("Vous n'avez pas le droit d'être un candidat .")
+    }
+  
     let candidat ={cin:CIN,nom:NOM,prenom:PRENOM,partiPolitique:PartiPolitique,age:AGE,electeurs:[]}
     candidats.push(candidat)
 }
@@ -65,4 +67,16 @@ for (let i=0; i<n;i++)
     ajouter_un()
 }
 
-//
+//Afficher la liste des candidats
+function affichage(){
+  for ( i=0;i<candidats.length;i++){
+    console.log(`    candidat: ${i+1} 
+    CIN : ${candidats[i].cin}
+    Nom : ${candidats[i].nom}
+    Prenom : ${candidats[i].prenom}
+    PartiPolitique : ${candidats[i].partiPolitique}
+    Age : ${candidats[i].age}
+    Nombre de votes: ${candidats[i].electeurs.length}
+    ------------------------------------`)
+  }
+}
