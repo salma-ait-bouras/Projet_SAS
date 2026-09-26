@@ -36,7 +36,7 @@ const candidats = [
     electeurs: ["QR901234"] },
   { cin: "OP890123", nom: "Idrissi", prenom: "Meryem", partiPolitique: "PJD", age: 27,
     electeurs: [] },
-  { cin: "QR901234", nom: "Berrada", prenom: "Omar", partiPolitique: "RNI", age: 38,
+  { cin: " ", nom: "Berrada", prenom: "Omar", partiPolitique: "RNI", age: 38,
     electeurs: ["CD234567", "EF345678", "MN789012"] },
   { cin: "ST012345", nom: "Fassi", prenom: "Khadija", partiPolitique: "PAM", age: 31,
     electeurs: [] },
@@ -47,19 +47,29 @@ function ajouter_un(tab)  {
   let NOM = prompt("saisir votre nom  : ")
   let PRENOM = prompt("saisir votre prenom  : ")
   let PartiPolitique = prompt("qu`il est votre Parti Politique : ")
-  let AGE= Number(prompt("saisir votre age  : ")) ;
-  if (PartiPolitique==="")
-        PartiPolitique="Indépendant"
+  let AGE= Number(prompt("saisir votre age  : ")) 
+  for (i=0;i<tab.length;i++){
+    for (j=0;j<tab[i].electeurs.length;j++)
+     if(CIN===tab[i].electeurs[j]){
+      console.log("vous êtes déjà un candidat .")
+      return;
+     }
+    }   
 
+  if (PartiPolitique===""){
+    PartiPolitique="Indépendant"
+  }
   while(!Number.isInteger(AGE)){
     console.log("L'âge doit être un nombre.")
     AGE= Number(prompt("saisir votre age  : "))
-  if(AGE<18)
+  if(AGE<18){
     console.log("Vous n'avez pas le droit d'être un candidat .")
+    return;
     }
   
     let candidat ={cin:CIN,nom:NOM,prenom:PRENOM,partiPolitique:PartiPolitique,age:AGE,electeurs:[]}
     tab.push(candidat)
+  } 
 }
 
 //Ajouter plusieurs candidats à la fois
@@ -108,5 +118,27 @@ function filter(arr,pp){
     }
    affichage(result)
   } 
+}
+
+//votage 
+function votage(arr){
+  let CIN = prompt("saisir votre CIN : ")
+  for (i=0;i<arr.length;i++){
+    for (j=0;j<arr[i].electeurs.length;j++)
+     if(CIN===arr[i].electeurs[j]){
+      console.log("Vous avez déjà voté et vous n'avez pas le droit de modifier votre vote ni de voter à nouveau .")
+      return;
+     }
+  }
+ cin_cnd= prompt("saisir CIN du candidat pour lequel vous souhaitez voter : ")  
+let trv=false;  
+for (i=0;i<arr.length;i++){
+  if(cin_cnd===arr[i].cin){
+    arr[i].electeurs.push(CIN); 
+    trv=true
+  } 
+}
+if(!trv)
+  console.log("aucun candidat a ce CIN")
 }
 
