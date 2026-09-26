@@ -142,3 +142,55 @@ if(!trv)
   console.log("aucun candidat a ce CIN")
 }
 
+//recherche par CIN
+function recherche_cin (arr,r_cin){
+  let trv=false
+  let index
+  for (i=0;i<arr.length;i++){
+    if(r_cin===arr[i].cin){
+      let index=i
+       return index;
+    } 
+  }return "aucun candidat a ce CIN";
+}
+
+//modification pp
+function modification_du_pp (arr){
+let CIN = prompt("saisir  le CIN de candidates tu veux modifies :")
+let i=recherche_cin (arr,CIN)
+if (Number.isInteger(i)){
+ let Npp = prompt("saisir le nouveau parti politique: ")
+ arr[i].partiPolitique=Npp
+   console.log("la modification fait avec succès .")
+}else console.log(i)
+}
+
+//modification age
+function modification_age (arr){
+let CIN = prompt("saisir  le CIN de candidates tu veux modifies :")
+let i=recherche_cin (arr,CIN)
+if (Number.isInteger(i)){
+ let i=recherche_cin (arr,CIN)
+ let Nage = prompt("saisir le nouveau age : ")
+ arr[i].age=Nage
+  console.log("la modification fait avec succès .")
+}else console.log(i)
+}
+
+//suppression 
+function suppression(arr){
+let CIN = prompt("saisir  le CIN de candidates tu veux modifies :")
+let index=recherche_cin (arr,CIN)
+let temp=0
+if (Number.isInteger(i)){
+ for (i=index;i<arr.length;i++){
+  temp=arr[i]
+  arr[i]=arr[i+1]
+  arr[i+1]=temp
+ }
+ arr.pop ;
+ console.log("la suppression fait avec succès . ")
+}
+else console.log(index)
+
+}
