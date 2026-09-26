@@ -68,15 +68,32 @@ for (let i=0; i<n;i++)
 }
 
 //Afficher la liste des candidats
-function affichage(){
-  for ( i=0;i<candidats.length;i++){
+function affichage(tab){
+  for ( i=0;i<tab.length;i++){
     console.log(`    candidat: ${i+1} 
-    CIN : ${candidats[i].cin}
-    Nom : ${candidats[i].nom}
-    Prenom : ${candidats[i].prenom}
-    PartiPolitique : ${candidats[i].partiPolitique}
-    Age : ${candidats[i].age}
-    Nombre de votes: ${candidats[i].electeurs.length}
+    CIN : ${tab[i].cin}
+    Nom : ${tab[i].nom}
+    Prenom : ${tab[i].prenom}
+    PartiPolitique : ${tab[i].partiPolitique}
+    Age : ${tab[i].age}
+    Nombre de votes: ${tab[i].electeurs.length}
     ------------------------------------`)
   }
+}
+
+//Trier les candidats par nombre de votes
+function bblSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < (arr.length - i - 1); j++) {
+
+          if (arr[j].electeurs.length < arr[j + 1].electeurs.length) {
+
+              let temp = arr[j]
+              arr[j] = arr[j + 1]
+              arr[j + 1] = temp
+          }
+      }
+  }
+
+  affichage(arr)
 }
