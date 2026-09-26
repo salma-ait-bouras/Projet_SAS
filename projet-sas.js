@@ -11,6 +11,7 @@ console.log(" 5. Modifier les informations d'un candidat")
 console.log(" 6. Supprimer un candidat")
 console.log(" 7. Rechercher des candidats")
 console.log(" 8. Statistiques de l'élection")
+console.log(" 0. sortir ")
 console.log("==============================================")
 
 let choix = prompt("choisir un nombre : ")
@@ -41,7 +42,7 @@ const candidats = [
     electeurs: [] },
 ];
 
-function ajouter_un()  {
+function ajouter_un(tab)  {
   let CIN = prompt("saisir votre CIN : ")
   let NOM = prompt("saisir votre nom  : ")
   let PRENOM = prompt("saisir votre prenom  : ")
@@ -58,13 +59,13 @@ function ajouter_un()  {
     }
   
     let candidat ={cin:CIN,nom:NOM,prenom:PRENOM,partiPolitique:PartiPolitique,age:AGE,electeurs:[]}
-    candidats.push(candidat)
+    tab.push(candidat)
 }
 
 //Ajouter plusieurs candidats à la fois
 function ajouter_pls(n){ 
 for (let i=0; i<n;i++)
-    ajouter_un()
+    ajouter_un(tab)
 }
 
 //Afficher la liste des candidats
@@ -97,3 +98,15 @@ function bblSort(arr) {
 
   affichage(arr)
 }
+
+//Trier les candidats par parti politique
+function filter(arr,pp){
+  let result=[] 
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i].partiPolitique===pp){
+      result.push(arr[i])
+    }
+   affichage(result)
+  } 
+}
+
