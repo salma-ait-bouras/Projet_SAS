@@ -55,7 +55,9 @@ function ajouter_un(tab)  {
       return;
      }
     }   
-
+  while(CIN==="" || NOM==="" || PRENOM===""){
+    console.log("saisir vous informations.")
+  }
   if (PartiPolitique===""){
     PartiPolitique="Indépendant"
   }
@@ -64,6 +66,7 @@ function ajouter_un(tab)  {
         console.log("L'âge doit être un nombre.");
     } else {
         console.log("Vous n'avez pas le droit d'être un candidat.");
+        break;
     }
 
     AGE = Number(prompt("saisir votre age : "));
@@ -112,15 +115,14 @@ function bblSort(tab) {
 }
 
 //Trier les candidats par parti politique
-function filter(arr){
+function filter(arr,pp){
   let result=[] 
-  let pp= prompt("saisir le parti politique:")
   for (let i = 0; i < arr.length; i++){
     if (arr[i].partiPolitique===pp){
       result.push(arr[i])
     }
   } 
-  affichage(result)
+ return result
 }
 
 //votage 
@@ -272,4 +274,102 @@ for (let i = 0; i < arr.length; i++) {
 for (let i = 0; i < partis.length; i++) {
     console.log(partis[i] + " : " + nombres[i] + " candidat(s)");
 }
+}
+
+let choix;
+while (choix !== "0") {
+  choix = menu();
+  switch (choix) {
+  case 1:
+   ajouter_un(candidats)
+   break;
+  case 2:
+    let n = prompt("combien de candidat tu veux ajouter :")
+   ajouter_pls(candidats,n)
+   break;
+  case 3:
+    let m ;
+      while(m!==0){
+        Number(m= prompt(`1.Afficher la liste des candidats:
+                   2.Afficher la liste des candidats trier par lenombre de votes :
+                   3.Afficher la liste des candidats d'un parti politique spécifique : 
+                   0.sortir
+                   choisire un nombre : `))
+        if (m===1){
+          affichage(candidats)
+          break;
+        }
+        else if (m===2){
+          affichage(bblSort(candidats))
+          break;
+        }
+        else if (m===3){
+          let pp= prompt("saisir le parti politique:")
+          affichage(filter(candidats,pp))
+          break;
+        }
+        else 
+          console.log("ce choix n'existe pas .")
+         break;
+      }
+   break;
+  case 4:
+    votage(candidats)
+   break;
+  case 5:
+    let l ;
+    while(l!==0){
+      Number(l=prompt(`1. tu veux modifier le parti politique d'un candidat.
+                2. tu veux modifier l'âge d'un candidat.
+                0. sortir`))
+      if (l===1){
+      modification_du_pp(candidats)
+      break;
+      }
+      else if (l===2){
+        modification_age (candidats)
+        break;
+      }
+      else 
+        console.log("ce choix n'existe pas .")
+      break;
+    }
+   break;
+  case 6:
+   suppression(candidats)
+   break;
+  case 7:
+    recherche_nom (candidats)
+   break;
+  case 8:
+    let k ;
+    while(k!==0){
+      Number(k=prompt(`1.Afficher le nombre total de candidats.
+                2. Afficher le nombre total de votes exprimés dans toute l'élection.
+                3.Afficher le Top 3 des candidats ayant le plus de votes.
+                4.Afficher le nombre de candidats par parti politique.
+                0. sortir`))
+      if (k===1){
+       nmbr_t_candidats (candidats)
+       break;
+      }
+      else if (k===2){
+        nmbr_t_votes (candidats)
+        break;
+      }
+      else if (k===3){
+        top_3(candidats)
+      }
+      else if (k===4){
+        nombre_candidats_pp(candidats)
+      }
+      else 
+        console.log("ce choix n'existe pas .")
+      break;
+    }
+  break;
+  default:
+    console.log("ce choix n'existe pas .")
+    break;
+    }
 }
