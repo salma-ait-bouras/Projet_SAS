@@ -104,7 +104,7 @@ function affichage(tab){
 
 //Trier les candidats par nombre de votes
 function bblSort(tab) {
-  let arr=[tab] 
+  let arr=[...tab] 
   for (let i = 0; i < arr.length; i++) {
       for (let j = 0; j < (arr.length - i - 1); j++) {
 
@@ -295,12 +295,12 @@ while (choix != "0") {
    break;
   case "3":
     let m ;
+    m= prompt(`1.Afficher la liste des candidats:
+2.Afficher la liste des candidats trier par le nombre de votes :
+3.Afficher la liste des candidats d'un parti politique spécifique : 
+0.sortir
+choisire un nombre : `)
       while(m!=0){
-        m= prompt(`1.Afficher la liste des candidats:
-                          2.Afficher la liste des candidats trier par lenombre de votes :
-                          3.Afficher la liste des candidats d'un parti politique spécifique : 
-                          0.sortir
-                         choisire un nombre : `)
         if (m==1){
           affichage(candidats)
           break;
@@ -314,9 +314,6 @@ while (choix != "0") {
           affichage(filter(candidats,pp))
           break;
         }
-        else if (m==0){
-        console.log("Au revoir !")
-        break;}
         else 
           console.log("ce choix n'existe pas .")
          break;
@@ -327,10 +324,10 @@ while (choix != "0") {
    break;
   case "5":
     let l ;
+    l=prompt(`1. tu veux modifier le parti politique d'un candidat.
+2. tu veux modifier l'âge d'un candidat.
+0. sortir`)
     while(l!=0){
-      l=prompt(`1. tu veux modifier le parti politique d'un candidat.
-                2. tu veux modifier l'âge d'un candidat.
-                0. sortir`)
       if (l==1){
       modification_du_pp(candidats)
       break;
@@ -339,9 +336,6 @@ while (choix != "0") {
         modification_age (candidats)
         break;
       }
-      else if (l==0){
-        console.log("Au revoir !")
-        break;}
       else 
         console.log("ce choix n'existe pas .")
       break;
@@ -355,12 +349,12 @@ while (choix != "0") {
    break;
   case "8":
     let k ;
+    k=prompt(`1.Afficher le nombre total de candidats.
+2. Afficher le nombre total de votes exprimés dans toute l'élection.
+3.Afficher le Top 3 des candidats ayant le plus de votes.
+4.Afficher le nombre de candidats par parti politique.
+0. sortir`)
     while(k!=0){
-      k=prompt(`1.Afficher le nombre total de candidats.
-                2. Afficher le nombre total de votes exprimés dans toute l'élection.
-                3.Afficher le Top 3 des candidats ayant le plus de votes.
-                4.Afficher le nombre de candidats par parti politique.
-                0. sortir`)
       if (k==1){
        nmbr_t_candidats (candidats)
        break;
@@ -375,9 +369,6 @@ while (choix != "0") {
       else if (k==4){
         nombre_candidats_pp(candidats)
       }
-      else if (k==0){
-        console.log("Au revoir !")
-        break;}
       else 
         console.log("ce choix n'existe pas .")
       break;
