@@ -280,7 +280,7 @@ let choix;
 while (choix !== "0") {
   choix = menu();
   switch (choix) {
-  case 1:
+  case "1":
    ajouter_un(candidats)
    break;
   case "2":
