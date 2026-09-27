@@ -44,29 +44,31 @@ const candidats = [
 
 function ajouter_un(tab)  {
   let CIN = prompt("saisir votre CIN : ")
-  let NOM = prompt("saisir votre nom  : ")
-  let PRENOM = prompt("saisir votre prenom  : ")
-  let PartiPolitique = prompt("qu`il est votre Parti Politique : ")
-  let AGE= Number(prompt("saisir votre age  : ")) 
-  for (let i=0;i<tab.length;i++){
+    while(CIN==="" ){
+      CIN = prompt("saisir votre CIN : ");
+    }
+    for (let i=0;i<tab.length;i++){
     for (let j=0;j<tab[i].electeurs.length;j++){
      if(CIN === tab[i].cin || CIN===tab[i].electeurs[j]){
       console.log("vous êtes déjà un candidat .")
       return;
      }
     }
-   }   
-  while(CIN==="" || NOM==="" || PRENOM===""){
-    if(CIN===""){ 
-      CIN = prompt("saisir votre CIN : ");}
-    else if (NOM===""){
+   }     let NOM = prompt("saisir votre nom  : ")
+    while( NOM===""){
+      NOM = prompt("saisir votre nom : ");
+    }
+  let PRENOM = prompt("saisir votre prenom  : ")
+    while(PRENOM===""){
       NOM = prompt("saisir votre nom : ");}
-    else 
-       PRENOM = prompt("saisir votre prenom : ");
-}
-  if (PartiPolitique===""){
+
+  let PartiPolitique = prompt("qu`il est votre Parti Politique : ")
+    if (PartiPolitique===""){
     PartiPolitique="Indépendant"
   }
+
+  let AGE= Number(prompt("saisir votre age  : ")) 
+  
   while (!Number.isInteger(AGE) || AGE < 18) {
     if (!Number.isInteger(AGE)) {
         console.log("L'âge doit être un nombre.");
@@ -295,11 +297,11 @@ while (choix != "0") {
    break;
   case "3":
     let m ;
-    m= prompt(`1.Afficher la liste des candidats:
+console.log(`1.Afficher la liste des candidats:
 2.Afficher la liste des candidats trier par le nombre de votes :
 3.Afficher la liste des candidats d'un parti politique spécifique : 
-0.sortir
-choisire un nombre : `)
+0.sortir`)
+m = prompt("choisire un nombre : ")
       while(m!=0){
         if (m==1){
           affichage(candidats)
@@ -324,9 +326,10 @@ choisire un nombre : `)
    break;
   case "5":
     let l ;
-    l=prompt(`1. tu veux modifier le parti politique d'un candidat.
+    console.log(`1. tu veux modifier le parti politique d'un candidat.
 2. tu veux modifier l'âge d'un candidat.
 0. sortir`)
+l=prompt(`choisire un nombre :`)
     while(l!=0){
       if (l==1){
       modification_du_pp(candidats)
@@ -349,11 +352,12 @@ choisire un nombre : `)
    break;
   case "8":
     let k ;
-    k=prompt(`1.Afficher le nombre total de candidats.
+    console.log(`1.Afficher le nombre total de candidats.
 2. Afficher le nombre total de votes exprimés dans toute l'élection.
 3.Afficher le Top 3 des candidats ayant le plus de votes.
 4.Afficher le nombre de candidats par parti politique.
 0. sortir`)
+k=prompt(`choisire un nombre :`)
     while(k!=0){
       if (k==1){
        nmbr_t_candidats (candidats)
