@@ -283,18 +283,18 @@ while (choix !== "0") {
   case 1:
    ajouter_un(candidats)
    break;
-  case 2:
+  case "2":
     let n = prompt("combien de candidat tu veux ajouter :")
    ajouter_pls(candidats,n)
    break;
-  case 3:
+  case "3":
     let m ;
       while(m!==0){
-        Number(m= prompt(`1.Afficher la liste des candidats:
-                   2.Afficher la liste des candidats trier par lenombre de votes :
-                   3.Afficher la liste des candidats d'un parti politique spécifique : 
-                   0.sortir
-                   choisire un nombre : `))
+        m= prompt(`1.Afficher la liste des candidats:
+                          2.Afficher la liste des candidats trier par lenombre de votes :
+                          3.Afficher la liste des candidats d'un parti politique spécifique : 
+                          0.sortir
+                         choisire un nombre : `)
         if (m===1){
           affichage(candidats)
           break;
@@ -313,15 +313,15 @@ while (choix !== "0") {
          break;
       }
    break;
-  case 4:
+  case "4":
     votage(candidats)
    break;
-  case 5:
+  case "5":
     let l ;
     while(l!==0){
-      Number(l=prompt(`1. tu veux modifier le parti politique d'un candidat.
+      l=prompt(`1. tu veux modifier le parti politique d'un candidat.
                 2. tu veux modifier l'âge d'un candidat.
-                0. sortir`))
+                0. sortir`)
       if (l===1){
       modification_du_pp(candidats)
       break;
@@ -335,20 +335,20 @@ while (choix !== "0") {
       break;
     }
    break;
-  case 6:
+  case "6":
    suppression(candidats)
    break;
-  case 7:
+  case "7":
     recherche_nom (candidats)
    break;
-  case 8:
+  case "8":
     let k ;
     while(k!==0){
-      Number(k=prompt(`1.Afficher le nombre total de candidats.
+      k=prompt(`1.Afficher le nombre total de candidats.
                 2. Afficher le nombre total de votes exprimés dans toute l'élection.
                 3.Afficher le Top 3 des candidats ayant le plus de votes.
                 4.Afficher le nombre de candidats par parti politique.
-                0. sortir`))
+                0. sortir`)
       if (k===1){
        nmbr_t_candidats (candidats)
        break;
