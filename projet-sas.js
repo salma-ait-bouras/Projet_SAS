@@ -57,9 +57,12 @@ function ajouter_un(tab)  {
     }
    }   
   while(CIN==="" || NOM==="" || PRENOM===""){
-  CIN = prompt("saisir votre CIN : ");
-  NOM = prompt("saisir votre nom : ");
-  PRENOM = prompt("saisir votre prenom : ");
+    if(CIN===""){ 
+      CIN = prompt("saisir votre CIN : ");}
+    else if (NOM===""){
+      NOM = prompt("saisir votre nom : ");}
+    else 
+       PRENOM = prompt("saisir votre prenom : ");
 }
   if (PartiPolitique===""){
     PartiPolitique="Indépendant"
